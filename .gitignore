@@ -1,0 +1,5 @@
+cloning-github/client/node_modules/*
+.vscode/*
+cloning-github/client/.cache/*
+cloning-github/client/dist/*
+cloning-github/server/node_modules/*
