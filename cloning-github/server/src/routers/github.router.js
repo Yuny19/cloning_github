@@ -4,7 +4,9 @@ const githubController = require('../controllers/github.controller');
 
 router.get('/user', githubController.getUser);
 
-router.get('/getRepo', githubController.getRepository);
+router.get('/getRepo', githubController.getAllRepository);
+
+router.get('/repos/:owner/:repo', githubController.getRepository)
 
 router.get('/:code', githubController.getToken);
 

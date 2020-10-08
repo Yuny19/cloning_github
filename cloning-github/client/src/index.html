@@ -6,24 +6,58 @@
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 </head>
 
-<body class="bg-gray-100">
-    <div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-sm mx-auto flex p-6 bg-opacity-25 bg-white rounded-lg shadow-2xl ">
-            <div>
-                <img class="mx-auto h-14 w-auto"
-                    src="https://i0.wp.com/www.globalemancipation.ngo/wp-content/uploads/2017/09/github-logo.png?fit=2000%2C665&ssl=1"
-                    alt="Workflow">
-
-                    <div class="pt-3 center mx-auto">
-                        <a href="https://github.com/login/oauth/authorize?client_id=4e33864c00f53ec95f8a&scope=user%20repo%20delete_repo"><button 
-                            class="bg-black w-auto w-full hover:bg-gray-100 text-white hover:text-black font-semibold py-2 px-4 border border-gray-400 rounded shadow">
-                            Sign in
-                        </button></a>
-                    </div>
+<body>
+    <div id="login">
+        <div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-sm mx-auto flex p-6 bg-opacity-25 bg-white rounded-lg shadow-2xl ">
+                <div>
+                    <img class="mx-auto h-14 w-auto"
+                        src="https://i0.wp.com/www.globalemancipation.ngo/wp-content/uploads/2017/09/github-logo.png?fit=2000%2C665&ssl=1"
+                        alt="Workflow">
+    
+                        <div class="pt-3 center mx-auto">
+                            <a href="https://github.com/login/oauth/authorize?client_id=4e33864c00f53ec95f8a&scope=user%20repo%20delete_repo"><button 
+                                class="bg-black w-auto w-full hover:bg-gray-100 text-white hover:text-black font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+                                Sign in
+                            </button></a>
+                        </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div id="dashboard">
+        <nav class="flex items-center justify-between flex-wrap bg-gray-900 p-3">
+            <div class="flex items-center flex-shrink-0 text-white mr-6">
+              <span class="font-semibold text-xl tracking-tight">Cloning Github</span>
+            </div>
+            <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+              <div class="text-sm lg:flex-grow">
+              </div>
+              <div>
+                <a href="#" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Sign Out</a>
+              </div>
+            </div>
+          </nav>  
+          
+          <div class="overflow-hidden shadow-2xl border-t-4 bg-white mb-4 rounded-b-lg rounded-t border-red-light w-full md:w-1/4 h-full">
+            <div class="px-6 mb-2 mt-4 mb-8">
+                <div>
+                <div class=" text-c2 mb-4 mt-8">My Profile</div>
+            </div>
+                <div>
+                    <div class="mb-4 mt-8 text-center"><button class="bg-green-700 text-white hover:bg-white hover:text-gray-800 font-semibold py-1 px-2 border border-gray-400 rounded shadow ">New Repository</button></div>
+                </div>
+                <div>
+                    <div class=" text-c2 mb-1 mt-4">List Repository</div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+            
             
 </body>
-<script src="js/index.js"></script>
+<script src="index.js"></script>
 
 </html>

@@ -39,8 +39,24 @@ class githubCloneController {
             })
     }
 
-    static getRepository(req, res) {
+    static getAllRepository(req, res) {
         instance.get('user/repos', {
+            headers: { 'Authorization': `token ${req.headers.token}` }
+        })
+            .then(({ data }) => {
+                res.status(200).json(data);
+            })
+            .catch((err) => {
+                console.log(err)
+                res.status(err.status).json({
+                    message: err.message
+
+                })
+            })
+    }
+
+    static getRepository(req, res){
+        instance.get(`repos/${req.params.owner}/${req.params.repo}`, {
             headers: { 'Authorization': `token ${req.headers.token}` }
         })
             .then(({ data }) => {
