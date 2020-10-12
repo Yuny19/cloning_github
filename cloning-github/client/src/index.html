@@ -1,63 +1,166 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="stylesheet/index.pcss">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="stylesheet/index.pcss">
+  <link rel="stylesheet" href="stylesheet/js-css-toast/jquery.toast.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div id="login">
-        <div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-            <div class="max-w-sm mx-auto flex p-6 bg-opacity-25 bg-white rounded-lg shadow-2xl ">
-                <div>
-                    <img class="mx-auto h-14 w-auto"
-                        src="https://i0.wp.com/www.globalemancipation.ngo/wp-content/uploads/2017/09/github-logo.png?fit=2000%2C665&ssl=1"
-                        alt="Workflow">
-    
-                        <div class="pt-3 center mx-auto">
-                            <a href="https://github.com/login/oauth/authorize?client_id=4e33864c00f53ec95f8a&scope=user%20repo%20delete_repo"><button 
-                                class="bg-black w-auto w-full hover:bg-gray-100 text-white hover:text-black font-semibold py-2 px-4 border border-gray-400 rounded shadow">
-                                Sign in
-                            </button></a>
-                        </div>
-                </div>
-            </div>
+  <div id="login">
+    <div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-sm mx-auto flex p-6 bg-opacity-25 bg-white rounded-lg shadow-2xl ">
+        <div>
+          <img class="mx-auto h-14 w-auto"
+            src="https://i0.wp.com/www.globalemancipation.ngo/wp-content/uploads/2017/09/github-logo.png?fit=2000%2C665&ssl=1"
+            alt="Workflow">
+
+          <div class="pt-3 center mx-auto">
+            <a
+              href="https://github.com/login/oauth/authorize?client_id=4e33864c00f53ec95f8a&scope=user%20repo%20delete_repo"><button
+                class="bg-black w-auto w-full hover:bg-gray-100 text-white hover:text-black font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+                Sign in
+              </button></a>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="dashboard">
+    <!-- navbar -->
+    <nav class="flex items-center justify-between flex-wrap bg-gray-900 p-3">
+      <div class="flex items-center flex-shrink-0 text-white mr-6">
+        <span class="font-semibold text-xl tracking-tight">Cloning Github</span>
+      </div>
+      <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+        <div class="text-sm lg:flex-grow">
+        </div>
+        <div>
+          <button id="signOut" type="button"
+            class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Sign
+            Out</button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="flex w-full h-full flex-wrap">
+      <div class="w-1/4 h-auto pb-8" id="sidebar">
+        <div
+          class="overflow-hidden shadow-2xl border-t-4 bg-white mb-4 rounded-b-lg rounded-t border-red-light w-full h-full">
+          <div class="px-6 mb-2 mt-4 mb-8">
+            <div class="flex w-full flex-wrap">
+              <div class="w-1/4" id="avatar">
+              </div>
+              <div class="w-3/4 ">
+                <div class="font-mono font-semibold text-xs">
+                  user
+                </div>
+                <div id="user" class="font-mono text-md text-gray-800 "></div>
+              </div>
+            </div>
+            <div>
+              <div class="mb-4 mt-8 text-center"><button
+                  class="modal-open bg-green-700 text-white hover:bg-white hover:text-gray-800 font-semibold py-1 px-2 border border-gray-400 rounded shadow ">New
+                  Repository</button></div>
+            </div>
+            <div>
+              <div class=" text-c2 mb-1 mt-4"><b>Repository</b> </div>
+              <hr>
+              <div id="listRepo" class="font-mono text-sm"></div>
+            </div>
+            <div id="list-repo" >
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-3/4 h-full  items-center justify-center py-20" id="content">
+        <div class="text-center">
+          ini content
+        </div>
+      </div>
     </div>
 
-    <div id="dashboard">
-        <nav class="flex items-center justify-between flex-wrap bg-gray-900 p-3">
-            <div class="flex items-center flex-shrink-0 text-white mr-6">
-              <span class="font-semibold text-xl tracking-tight">Cloning Github</span>
-            </div>
-            <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-              <div class="text-sm lg:flex-grow">
-              </div>
-              <div>
-                <a href="#" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Sign Out</a>
-              </div>
-            </div>
-          </nav>  
-          
-          <div class="overflow-hidden shadow-2xl border-t-4 bg-white mb-4 rounded-b-lg rounded-t border-red-light w-full md:w-1/4 h-full">
-            <div class="px-6 mb-2 mt-4 mb-8">
-                <div>
-                <div class=" text-c2 mb-4 mt-8">My Profile</div>
-            </div>
-                <div>
-                    <div class="mb-4 mt-8 text-center"><button class="bg-green-700 text-white hover:bg-white hover:text-gray-800 font-semibold py-1 px-2 border border-gray-400 rounded shadow ">New Repository</button></div>
-                </div>
-                <div>
-                    <div class=" text-c2 mb-1 mt-4">List Repository</div>
-                    <hr>
-                </div>
-            </div>
+    <!-- modal -->
+    <div class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center">
+      <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50"></div>
+
+      <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+
+        <div
+          class="modal-close absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">
+          <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+            viewBox="0 0 18 18">
+            <path
+              d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
+            </path>
+          </svg>
+          <span class="text-sm">(Esc)</span>
         </div>
+
+        <!-- Add margin if you want to see some of the overlay behind the modal-->
+        <div class="modal-content py-4 text-left px-6">
+          <!--Title-->
+          <div class="flex justify-between items-center pb-3">
+            <p class="text-2xl font-bold">Create New Repository</p>
+            <div class="modal-close cursor-pointer z-50">
+              <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                viewBox="0 0 18 18">
+                <path
+                  d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
+                </path>
+              </svg>
+            </div>
+          </div>
+
+          <!--Body-->
+            <div class="md:flex md:items-center mb-6">
+              <div class="md:w-1/3">
+                <label class="block text-black text-sm font-light md:text-right mb-1 md:mb-0 pr-4" for="name-repo">
+                  Repository Name :
+                </label>
+              </div>
+              <div class="md:w-2/3">
+                <input class="bg-gray-200 text-sm border-2 border-gray-200 rounded w-full py-2 px-4 text-black leading-3 focus:outline-none focus:bg-white focus:border-blue-500" id="name-repo" type="text">
+              </div>
+            </div>
+            <div class="md:flex md:items-center mb-6">
+              <div class="md:w-1/3">
+                <label class="block font-light text-sm text-black md:text-right mb-1 md:mb-0 pr-4" for="description-repo">
+                  Description : 
+                </label>
+              </div>
+              <div class="md:w-2/3">
+                <input class="bg-gray-200 text-sm  border-2 border-gray-200 rounded w-full py-2 px-4 text-black leading-3 focus:outline-none focus:bg-white focus:border-blue-500" id="description-repo" type="text" >
+              </div>
+            </div>
+            <div class="md:flex md:items-center mb-6">
+              <div class="md:w-1/3"></div>
+              <label class="md:w-2/3 block text-gray-500 font-bold">
+                <input class="mr-2 leading-tight" type="checkbox" id="check-readme">
+                <span class="text-sm">
+                  Readme.md
+                </span>
+              </label>
+            </div>
+
+          <!--Footer-->
+          <div class="flex justify-end pt-2">
+            <button id="save-repo"
+              class="modal-close px-4 bg-teal-500 p-3 rounded-lg text-white hover:bg-gray-100 hover:text-indigo-400 mr-2">Save</button>
+            <button class="modal-close px-4 bg-gray-500 p-3 rounded-lg text-white hover:text-indigo-400 hover:bg-gray-100">Cancel</button>
+          </div>
+
+        </div>
+      </div>
     </div>
-            
-            
+  </div>
+
+
 </body>
+<script src="./stylesheet/js-css-toast/jquery.toast.js"></script>
 <script src="index.js"></script>
 
 </html>

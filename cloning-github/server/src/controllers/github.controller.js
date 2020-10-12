@@ -6,15 +6,17 @@ const instance = axios.create({
 
 class githubCloneController {
     static getToken(req, res) {
-
         axios.post('https://github.com/login/oauth/access_token', {
             client_id: process.env.CLIENT_ID,
             client_secret: process.env.CLIENT_SECRET,
             code: req.params.code
         })
-            .then((data) => {
-                res.status(data.status).json(
-                    data.data
+            .then(({ data }) => {
+                var dt = data.split('&');
+                var getToken = dt[0].split('=');
+                var token = getToken[1];
+                res.status(200).json(
+                    token
                 )
             })
             .catch((err) => {
@@ -47,7 +49,6 @@ class githubCloneController {
                 res.status(200).json(data);
             })
             .catch((err) => {
-                console.log(err)
                 res.status(err.status).json({
                     message: err.message
 
@@ -55,7 +56,7 @@ class githubCloneController {
             })
     }
 
-    static getRepository(req, res){
+    static getRepository(req, res) {
         instance.get(`repos/${req.params.owner}/${req.params.repo}`, {
             headers: { 'Authorization': `token ${req.headers.token}` }
         })
@@ -63,7 +64,6 @@ class githubCloneController {
                 res.status(200).json(data);
             })
             .catch((err) => {
-                console.log(err)
                 res.status(err.status).json({
                     message: err.message
 
@@ -75,7 +75,7 @@ class githubCloneController {
         instance.post('user/repos', {
             name: req.body.name,
             description: req.body.description,
-            private: req.body.private,
+            private: false,
             auto_init: req.body.auto_init
         }, {
             headers: { 'Authorization': `token ${req.headers.token}` }
