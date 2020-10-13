@@ -13,6 +13,7 @@ $(document).ready(function () {
     } else {
         $("#dashboard").show();
         $("#login").hide();
+        $("#content").hide();
 
         getList(token);
         getUser(token);
@@ -51,8 +52,8 @@ function getList() {
     })
         .done(function (data) {
             for (let i = 0; i < data.length; i++) {
-                var url = getRepo(`${data[i].name}`)
-                var list = '<a class="text-blue-400 hover:text-black" href="' + url + '">' + `${data[i].name}` + ' </a><br>'
+                var url = data[i].name;
+                var list = '<button id="getDetail" class="text-blue-400 hover:text-black focus:outline-none" value="' + url + '">' + `${data[i].name}` + ' </button><br>'
                 $("#listRepo").append(list);
             }
         })
@@ -66,6 +67,59 @@ function getList() {
             })
         })
 }
+
+$(document).on("click", "#getDetail", function (event) {
+    
+
+    var repo = $(this).val();
+    $.ajax({
+        url: `http://localhost:3000/repos/Yuny19/${repo}`,
+        headers: {
+            token: localStorage.getItem('token')
+        },
+        type: 'GET'
+    })
+        .done(function (data) {
+
+
+            var html = '<tr>' +
+                '<td class="border px-4 py-2">.Ds Store</td>' +
+                '<td class="border px-4 py-2">file</td>' +
+                '<td class="border px-4 py-2">' + data.size + '</td>' +
+                '</tr>';
+
+            var button = '<button id="deleteRepo" class="bg-red-700 text-white hover:bg-white hover:text-gray-800 font-semibold py-1 px-2 border border-gray-400 focus:outline-none rounded shadow" value="' + data.full_name + '">Delete Repository</button>';
+
+            $("#body-table").html("");
+            $("#delete-repo").html("");
+
+            $("#body-table").append(html);
+            $("#delete-repo").append(button);
+            $("#content").show();
+        })
+        .catch(function (error) {
+            alert(error.message);
+        })
+});
+
+$(document).on("click", "#deleteRepo", function (event) {
+    var repo = $(this).val();
+    $.ajax({
+        url: `http://localhost:3000/${repo}`,
+        headers: {
+            token: localStorage.getItem('token')
+        },
+        type: 'DELETE'
+    })
+        .done(function (data) {
+            location.reload();
+            alert('delete success');
+        })
+        .catch(function (error) {
+            alert(error.message);
+        })
+});
+
 
 function getUser() {
     $.ajax({
@@ -90,14 +144,6 @@ function getUser() {
         })
 }
 
-
-function deleteRepo() {
-
-}
-
-function getRepo(value) {
-
-}
 
 function getUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1),
